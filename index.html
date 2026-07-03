@@ -4,66 +4,59 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Morocco 🇲🇦 vs Canada 🇨🇦 Lucky Pair Ticket</title>
+<title>Morocco vs Canada Lucky Draw</title>
 
 <link rel="stylesheet" href="style.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
-<header class="hero">
+<div class="container">
 
-<div class="overlay">
-
-<h1>🏆 Morocco 🇲🇦 vs Canada 🇨🇦</h1>
+<h1>🇲🇦 Morocco 🇨🇦 Canada</h1>
 
 <h2>Round of 16</h2>
 
-<p>📅 4 July | 🕥 10:30 PM</p>
+<p><strong>Date:</strong> 4 July</p>
+
+<p><strong>Time:</strong> 10:30 PM</p>
+
+<div class="qr-box">
+
+<h3>Scan & Pay</h3>
+
+<img src="qr.png" class="qr">
+
+<p>After payment, enter the reveal code.</p>
 
 </div>
 
-</header>
-
-<section class="payment">
-
-<h2>🎟 Buy Your Lucky Pair Ticket</h2>
-
-<img src="images/qr.png" class="qr">
-
-<h3>Scan QR Code & Pay</h3>
-
-<p class="price">Ticket Price : ₹_____</p>
-
-</section>
-
-<section class="unlock">
-
-<h2>Reveal Your Lucky Pair</h2>
+<div class="code-box">
 
 <input
-type="password"
-id="code"
+id="codeInput"
+type="text"
 placeholder="Enter Match Code">
 
-<button onclick="unlockTickets()">
+<button id="unlockBtn">
 
-Reveal Players
+Reveal Tickets
 
 </button>
 
 <p id="message"></p>
 
-</section>
+</div>
 
-<section id="ticketsContainer" class="tickets">
+<div id="ticketsContainer"></div>
 
-</section>
+</div>
+
+<script src="players.js"></script>
 
 <script src="script.js"></script>
 
 </body>
+
 </html>
