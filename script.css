@@ -1,0 +1,31 @@
+// Unlock code
+const SECRET_CODE = "MOCAN";
+
+function unlockTickets() {
+
+    const enteredCode = document
+        .getElementById("code")
+        .value
+        .trim()
+        .toUpperCase();
+
+    const message = document.getElementById("message");
+    const tickets = document.querySelectorAll(".ticket");
+
+    if (enteredCode === SECRET_CODE) {
+
+        tickets.forEach(ticket => {
+            ticket.classList.remove("hidden");
+        });
+
+        message.style.color = "#00ff66";
+        message.innerHTML = "✅ Tickets Unlocked Successfully!";
+
+    } else {
+
+        message.style.color = "red";
+        message.innerHTML = "❌ Invalid Match Code";
+
+    }
+
+}
