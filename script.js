@@ -1,110 +1,52 @@
-// ===============================
-// Morocco vs Canada Lucky Pair
-// Module 1
-// ===============================
-
 const SECRET_CODE = "MOCAN";
 
-/*
-For now we're using placeholder data.
-In Module 2 and Module 3 we'll replace these
-with the real Morocco and Canada players.
-*/
+const moroccoPlayers = [
+  { name: "Achraf Hakimi", image: "images/morocco/hakimi.png" },
+  { name: "Noussair Mazraoui", image: "images/morocco/mazraoui.png" },
+  { name: "Nayef Aguerd", image: "images/morocco/aguerd.png" },
+  { name: "Jawad El Yamiq", image: "images/morocco/elyamiq.png" },
+  { name: "Chadi Riad", image: "images/morocco/riad.png" },
+  { name: "Youssef Belammari", image: "images/morocco/belammari.png" },
+  { name: "Bilal El Khannouss", image: "images/morocco/elkhannouss.png" },
+  { name: "Sofyan Amrabat", image: "images/morocco/amrabat.png" },
+  { name: "Azzedine Ounahi", image: "images/morocco/ounahi.png" },
+  { name: "Ismael Saibari", image: "images/morocco/saibari.png" },
+  { name: "Neil El Aynaoui", image: "images/morocco/elaynaoui.png" },
+  { name: "Brahim Diaz", image: "images/morocco/brahim.png" },
+  { name: "Soufiane Rahimi", image: "images/morocco/rahimi.png" },
+  { name: "Ayoub El Kaabi", image: "images/morocco/elkaabi.png" },
+  { name: "Chemsdine Talbi", image: "images/morocco/talbi.png" },
+  { name: "Amine Sbai", image: "images/morocco/sbai.png" },
+  { name: "Zakaria El Ouahdi", image: "images/morocco/elouahdi.png" },
+  { name: "Marwane Saadane", image: "images/morocco/saadane.png" },
+  { name: "Anass Salah-Eddine", image: "images/morocco/salaheddine.png" },
+  { name: "Redouane Halhal", image: "images/morocco/halhal.png" },
+  { name: "Samir El Mourabet", image: "images/morocco/mourabet.png" },
+  { name: "Ayyoub Bouaddi", image: "images/morocco/bouaddi.png" },
+  { name: "Gessime Yassine", image: "images/morocco/yassine.png" }
+];
 
-const moroccoPlayers = [];
-const canadaPlayers = [];
-
-// Create placeholder players (23 tickets)
-for (let i = 1; i <= 23; i++) {
-
-    moroccoPlayers.push({
-        name: "Morocco Player " + i,
-        image: "images/morocco/player" + i + ".png"
-    });
-
-    canadaPlayers.push({
-        name: "Canada Player " + i,
-        image: "images/canada/player" + i + ".png"
-    });
-
-}
-
-const container = document.getElementById("ticketsContainer");
-
-function createTickets() {
-
-    container.innerHTML = "";
-
-    for (let i = 0; i < 23; i++) {
-
-        container.innerHTML += `
-
-<div class="ticket hidden">
-
-<div class="ticket-header">
-🎟 Ticket ${i + 1}
-</div>
-
-<div class="players">
-
-<div class="player">
-
-<img src="${moroccoPlayers[i].image}" alt="Morocco">
-
-<h3>${moroccoPlayers[i].name}</h3>
-
-</div>
-
-<div class="vs">
-VS
-</div>
-
-<div class="player">
-
-<img src="${canadaPlayers[i].image}" alt="Canada">
-
-<h3>${canadaPlayers[i].name}</h3>
-
-</div>
-
-</div>
-
-</div>
-
-`;
-
-    }
-
-}
-
-createTickets();
-
-function unlockTickets() {
-
-    const code = document
-        .getElementById("code")
-        .value
-        .trim()
-        .toUpperCase();
-
-    const message = document.getElementById("message");
-
-    if (code === SECRET_CODE) {
-
-        document.querySelectorAll(".ticket").forEach(ticket => {
-            ticket.classList.remove("hidden");
-        });
-
-        message.style.color = "#00ff66";
-        message.innerHTML = "✅ Tickets Revealed Successfully";
-
-    }
-
-    else {
-
-        message.style.color = "red";
-        message.innerHTML = "❌ Invalid Match Code";
-
-    }
-
-}
+const canadaPlayers = [  { name: "Jonathan David", image: "images/canada/jonathan_david.png" },
+  { name: "Cyle Larin", image: "images/canada/cyle_larin.png" },
+  { name: "Tajon Buchanan", image: "images/canada/tajon_buchanan.png" },
+  { name: "Alphonso Davies", image: "images/canada/alphonso_davies.png" },
+  { name: "Stephen Eustaquio", image: "images/canada/stephen_eustaquio.png" },
+  { name: "Ismael Kone", image: "images/canada/ismael_kone.png" },
+  { name: "Mathieu Choiniere", image: "images/canada/mathieu_choiniere.png" },
+  { name: "Jonathan Osorio", image: "images/canada/jonathan_osorio.png" },
+  { name: "Nathan Saliba", image: "images/canada/nathan_saliba.png" },
+  { name: "Ali Ahmed", image: "images/canada/ali_ahmed.png" },
+  { name: "Niko Sigur", image: "images/canada/niko_sigur.png" },
+  { name: "Richie Laryea", image: "images/canada/richie_laryea.png" },
+  { name: "Alistair Johnston", image: "images/canada/alistair_johnston.png" },
+  { name: "Derek Cornelius", image: "images/canada/derek_cornelius.png" },
+  { name: "Moise Bombito", image: "images/canada/moise_bombito.png" },
+  { name: "Joel Waterman", image: "images/canada/joel_waterman.png" },
+  { name: "Luc de Fougerolles", image: "images/canada/luc_de_fougerolles.png" },
+  { name: "Jacob Shaffelburg", image: "images/canada/jacob_shaffelburg.png" },
+  { name: "Promise David", image: "images/canada/promise_david.png" },
+  { name: "Tani Oluwaseyi", image: "images/canada/tani_oluwaseyi.png" },
+  { name: "Jayden Nelson", image: "images/canada/jayden_nelson.png" },
+  { name: "Liam Millar", image: "images/canada/liam_millar.png" },
+  { name: "Theo Bair", image: "images/canada/theo_bair.png" }
+];
