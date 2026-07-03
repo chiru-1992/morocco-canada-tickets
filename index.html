@@ -1,34 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Morocco 🇲🇦 vs Canada 🇨🇦 Lucky Pair Ticket</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="style.css">
+<title>Morocco 🇲🇦 vs Canada 🇨🇦 Lucky Pair Ticket</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
 
 <header class="hero">
 
+<div class="overlay">
+
 <h1>🏆 Morocco 🇲🇦 vs Canada 🇨🇦</h1>
 
 <h2>Round of 16</h2>
 
-<p>📅 4 July</p>
+<p>📅 4 July | 🕥 10:30 PM</p>
 
-<p>🕥 10:30 PM</p>
+</div>
 
 </header>
 
 <section class="payment">
 
-<h2>Buy Your Ticket</h2>
+<h2>🎟 Buy Your Lucky Pair Ticket</h2>
 
 <img src="images/qr.png" class="qr">
 
-<p>Scan the QR Code to Pay</p>
+<h3>Scan QR Code & Pay</h3>
 
 <p class="price">Ticket Price : ₹_____</p>
 
@@ -36,16 +42,16 @@
 
 <section class="unlock">
 
-<h2>Enter Match Code</h2>
+<h2>Reveal Your Lucky Pair</h2>
 
 <input
 type="password"
 id="code"
-placeholder="Enter Code">
+placeholder="Enter Match Code">
 
 <button onclick="unlockTickets()">
 
-Reveal Tickets
+Reveal Players
 
 </button>
 
@@ -53,36 +59,7 @@ Reveal Tickets
 
 </section>
 
-<section class="tickets" id="ticketsContainer">
-</section>
-
-<h3>🎟 Ticket 1</h3>
-
-<div class="players">
-
-<div class="player">
-
-<img src="images/morocco/player1.png">
-
-<h4>Morocco Player</h4>
-
-</div>
-
-<div class="vs">VS</div>
-
-<div class="player">
-
-<img src="images/canada/player1.png">
-
-<h4>Canada Player</h4>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- More tickets will be added here -->
+<section id="ticketsContainer" class="tickets">
 
 </section>
 
