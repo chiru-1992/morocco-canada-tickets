@@ -1,52 +1,87 @@
 const SECRET_CODE = "MOCAN";
 
-const moroccoPlayers = [
-  { name: "Achraf Hakimi", image: "images/morocco/hakimi.png" },
-  { name: "Noussair Mazraoui", image: "images/morocco/mazraoui.png" },
-  { name: "Nayef Aguerd", image: "images/morocco/aguerd.png" },
-  { name: "Jawad El Yamiq", image: "images/morocco/elyamiq.png" },
-  { name: "Chadi Riad", image: "images/morocco/riad.png" },
-  { name: "Youssef Belammari", image: "images/morocco/belammari.png" },
-  { name: "Bilal El Khannouss", image: "images/morocco/elkhannouss.png" },
-  { name: "Sofyan Amrabat", image: "images/morocco/amrabat.png" },
-  { name: "Azzedine Ounahi", image: "images/morocco/ounahi.png" },
-  { name: "Ismael Saibari", image: "images/morocco/saibari.png" },
-  { name: "Neil El Aynaoui", image: "images/morocco/elaynaoui.png" },
-  { name: "Brahim Diaz", image: "images/morocco/brahim.png" },
-  { name: "Soufiane Rahimi", image: "images/morocco/rahimi.png" },
-  { name: "Ayoub El Kaabi", image: "images/morocco/elkaabi.png" },
-  { name: "Chemsdine Talbi", image: "images/morocco/talbi.png" },
-  { name: "Amine Sbai", image: "images/morocco/sbai.png" },
-  { name: "Zakaria El Ouahdi", image: "images/morocco/elouahdi.png" },
-  { name: "Marwane Saadane", image: "images/morocco/saadane.png" },
-  { name: "Anass Salah-Eddine", image: "images/morocco/salaheddine.png" },
-  { name: "Redouane Halhal", image: "images/morocco/halhal.png" },
-  { name: "Samir El Mourabet", image: "images/morocco/mourabet.png" },
-  { name: "Ayyoub Bouaddi", image: "images/morocco/bouaddi.png" },
-  { name: "Gessime Yassine", image: "images/morocco/yassine.png" }
-];
+const ticketsContainer = document.getElementById("ticketsContainer");
+const codeInput = document.getElementById("codeInput");
+const unlockBtn = document.getElementById("unlockBtn");
+const message = document.getElementById("message");
 
-const canadaPlayers = [  { name: "Jonathan David", image: "images/canada/jonathan_david.png" },
-  { name: "Cyle Larin", image: "images/canada/cyle_larin.png" },
-  { name: "Tajon Buchanan", image: "images/canada/tajon_buchanan.png" },
-  { name: "Alphonso Davies", image: "images/canada/alphonso_davies.png" },
-  { name: "Stephen Eustaquio", image: "images/canada/stephen_eustaquio.png" },
-  { name: "Ismael Kone", image: "images/canada/ismael_kone.png" },
-  { name: "Mathieu Choiniere", image: "images/canada/mathieu_choiniere.png" },
-  { name: "Jonathan Osorio", image: "images/canada/jonathan_osorio.png" },
-  { name: "Nathan Saliba", image: "images/canada/nathan_saliba.png" },
-  { name: "Ali Ahmed", image: "images/canada/ali_ahmed.png" },
-  { name: "Niko Sigur", image: "images/canada/niko_sigur.png" },
-  { name: "Richie Laryea", image: "images/canada/richie_laryea.png" },
-  { name: "Alistair Johnston", image: "images/canada/alistair_johnston.png" },
-  { name: "Derek Cornelius", image: "images/canada/derek_cornelius.png" },
-  { name: "Moise Bombito", image: "images/canada/moise_bombito.png" },
-  { name: "Joel Waterman", image: "images/canada/joel_waterman.png" },
-  { name: "Luc de Fougerolles", image: "images/canada/luc_de_fougerolles.png" },
-  { name: "Jacob Shaffelburg", image: "images/canada/jacob_shaffelburg.png" },
-  { name: "Promise David", image: "images/canada/promise_david.png" },
-  { name: "Tani Oluwaseyi", image: "images/canada/tani_oluwaseyi.png" },
-  { name: "Jayden Nelson", image: "images/canada/jayden_nelson.png" },
-  { name: "Liam Millar", image: "images/canada/liam_millar.png" },
-  { name: "Theo Bair", image: "images/canada/theo_bair.png" }
-];
+function createTicket(ticket){
+
+return `
+<div class="ticket locked">
+
+<div class="ticket-number">
+🎟 Ticket ${ticket.ticket}
+</div>
+
+<div class="ticket-content">
+
+<div class="player">
+
+<img src="${ticket.morocco.image}" alt="${ticket.morocco.name}">
+
+<h3>${ticket.morocco.name}</h3>
+
+</div>
+
+<div class="vs">
+VS
+</div>
+
+<div class="player">
+
+<img src="${ticket.canada.image}" alt="${ticket.canada.name}">
+
+<h3>${ticket.canada.name}</h3>
+
+</div>
+
+</div>
+
+</div>
+`;
+
+}
+
+function loadTickets(){
+
+ticketsContainer.innerHTML="";
+
+tickets.forEach(ticket=>{
+
+ticketsContainer.innerHTML+=createTicket(ticket);
+
+});
+
+}
+
+loadTickets();unlockBtn.addEventListener("click", function () {
+
+    const enteredCode = codeInput.value.trim().toUpperCase();
+
+    if (enteredCode === SECRET_CODE) {
+
+        document.querySelectorAll(".ticket").forEach(ticket => {
+            ticket.classList.remove("locked");
+            ticket.classList.add("unlocked");
+        });
+
+        message.innerHTML = "✅ Tickets unlocked successfully!";
+        message.style.color = "#00cc66";
+
+    } else {
+
+        message.innerHTML = "❌ Invalid code. Please try again.";
+        message.style.color = "#ff3333";
+
+    }
+
+});
+
+codeInput.addEventListener("keypress", function (event) {
+
+    if (event.key === "Enter") {
+        unlockBtn.click();
+    }
+
+});
