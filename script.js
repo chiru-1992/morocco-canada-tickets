@@ -5,105 +5,91 @@ const codeInput = document.getElementById("codeInput");
 const unlockBtn = document.getElementById("unlockBtn");
 const message = document.getElementById("message");
 
+let unlocked = false;
+
 function createTicket(ticket) {
-  return `
+
+    return `
     <div class="ticket">
-      <div class="ticket-number">🎟 Ticket ${ticket.ticket}</div>
 
-      <div class="ticket-content hidden-content">
-
-        <div class="player">
-          <img src="${ticket.morocco.image}" alt="${ticket.morocco.name}">
-          <h3>${ticket.morocco.name}</h3>
+        <div class="ticket-number">
+            🎟 Ticket ${ticket.ticket}
         </div>
 
-        <div class="vs">VS</div>
+        ${
+            unlocked
+            ?
+            `
+            <div class="ticket-content">
 
-        <div class="player">
-          <img src="${ticket.canada.image}" alt="${ticket.canada.name}">
-          <h3>${ticket.canada.name}</h3>
-        </div>
+                <div class="player">
+                    <img src="${ticket.morocco.image}" alt="${ticket.morocco.name}">
+                    <h3>${ticket.morocco.name}</h3>
+                </div>
 
-      </div>
+                <div class="vs">VS</div>
+
+                <div class="player">
+                    <img src="${ticket.canada.image}" alt="${ticket.canada.name}">
+                    <h3>${ticket.canada.name}</h3>
+                </div>
+
+            </div>
+            `
+            :
+            `
+            <div class="locked-box">
+                🔒 Enter code to reveal players
+            </div>
+            `
+        }
+
     </div>
-  `;
+    `;
 }
 
-return `
-<div class="ticket locked">
+function loadTickets() {
 
-<div class="ticket-number">
-🎟 Ticket ${ticket.ticket}
-</div>
+    ticketsContainer.innerHTML = "";
 
-<div class="ticket-content">
+    tickets.forEach(ticket => {
 
-<div class="player">
+        ticketsContainer.innerHTML += createTicket(ticket);
 
-<img src="${ticket.morocco.image}" alt="${ticket.morocco.name}">
-
-<h3>${ticket.morocco.name}</h3>
-
-</div>
-
-<div class="vs">
-VS
-</div>
-
-<div class="player">
-
-<img src="${ticket.canada.image}" alt="${ticket.canada.name}">
-
-<h3>${ticket.canada.name}</h3>
-
-</div>
-
-</div>
-
-</div>
-`;
+    });
 
 }
 
-function loadTickets(){
+loadTickets();
 
-ticketsContainer.innerHTML="";
+unlockBtn.addEventListener("click", function () {
 
-tickets.forEach(ticket=>{
+    const code = codeInput.value.trim().toUpperCase();
 
-ticketsContainer.innerHTML+=createTicket(ticket);
+    if (code === SECRET_CODE) {
 
-});
+        unlocked = true;
 
-}
+        loadTickets();
 
-loadTickets();unlockBtn.addEventListener("click", function () {
-
-    const enteredCode = codeInput.value.trim().toUpperCase();
-
-    if (enteredCode === SECRET_CODE) {
-
-        document.querySelectorAll(".ticket").forEach(ticket => {
-            ticket.classList.remove("locked");
-            ticket.classList.add("unlocked");
-        });
-
-        message.innerHTML = "✅ Tickets unlocked successfully!";
-        message.style.color = "#00cc66";
+        message.innerHTML = "✅ Tickets Unlocked!";
+        message.style.color = "lime";
 
     } else {
 
-        message.innerHTML = "❌ Invalid code. Please try again.";
-        message.style.color = "#ff3333";
+        message.innerHTML = "❌ Wrong Code!";
+        message.style.color = "red";
 
     }
 
 });
 
-codeInput.addEventListener("keypress", function (event) {
+codeInput.addEventListener("keypress", function(e){
 
-    if (event.key === "Enter") {
+    if(e.key==="Enter"){
+
         unlockBtn.click();
+
     }
 
 });
