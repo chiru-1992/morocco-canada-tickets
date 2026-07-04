@@ -5,7 +5,29 @@ const codeInput = document.getElementById("codeInput");
 const unlockBtn = document.getElementById("unlockBtn");
 const message = document.getElementById("message");
 
-function createTicket(ticket){
+function createTicket(ticket) {
+  return `
+    <div class="ticket">
+      <div class="ticket-number">🎟 Ticket ${ticket.ticket}</div>
+
+      <div class="ticket-content hidden-content">
+
+        <div class="player">
+          <img src="${ticket.morocco.image}" alt="${ticket.morocco.name}">
+          <h3>${ticket.morocco.name}</h3>
+        </div>
+
+        <div class="vs">VS</div>
+
+        <div class="player">
+          <img src="${ticket.canada.image}" alt="${ticket.canada.name}">
+          <h3>${ticket.canada.name}</h3>
+        </div>
+
+      </div>
+    </div>
+  `;
+}
 
 return `
 <div class="ticket locked">
